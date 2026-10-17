@@ -70,6 +70,9 @@ public class MainApp extends javax.swing.JFrame {
         btnE6 = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         btnSell = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +92,7 @@ public class MainApp extends javax.swing.JFrame {
         btnDispatch.addActionListener(this::btnDispatchActionPerformed);
 
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelTitulo.setText("PalindromoAir - Sistema de Venta de Boletos");
+        jLabelTitulo.setText("PalindromoAir - Sistema de Venta de Boletos | Vuelo PA-030");
 
         consola.setEditable(false);
         consola.setColumns(20);
@@ -98,7 +101,7 @@ public class MainApp extends javax.swing.JFrame {
 
         jLabelNombre.setText("Nombre del pasajero:");
 
-        jPanelAsientos.setBorder(javax.swing.BorderFactory.createTitledBorder("Asientos (5 filas x 6 columnas)"));
+        jPanelAsientos.setBorder(javax.swing.BorderFactory.createTitledBorder("Cabina - Asientos (5 filas x 6 columnas)"));
         jPanelAsientos.setLayout(new java.awt.GridLayout(5, 6, 5, 5));
 
         btnA1.setText("A1");
@@ -191,8 +194,25 @@ public class MainApp extends javax.swing.JFrame {
         btnE6.setText("E6");
         jPanelAsientos.add(btnE6);
 
+        txtNombre.addActionListener(this::txtNombreActionPerformed);
+
         btnSell.setText("Sell Ticket");
         btnSell.addActionListener(this::btnSellActionPerformed);
+
+        jLabel1.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel1.setText("Disponible");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)));
+        jLabel1.setOpaque(true);
+
+        jLabel3.setBackground(new java.awt.Color(255, 215, 0));
+        jLabel3.setText("Palindromo (-20%)");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jLabel3.setOpaque(true);
+
+        jLabel4.setBackground(new java.awt.Color(255, 51, 0));
+        jLabel4.setText("Ocupado");
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)));
+        jLabel4.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +238,14 @@ public class MainApp extends javax.swing.JFrame {
                         .addComponent(jLabelTitulo)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(15, 15, 15))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,8 +271,14 @@ public class MainApp extends javax.swing.JFrame {
                         .addComponent(btnIncome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDispatch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
@@ -274,6 +308,16 @@ public class MainApp extends javax.swing.JFrame {
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
        
     }//GEN-LAST:event_btnSellActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        
+        if (nombre.trim().isEmpty()) {
+            consola.append("Ingrese un nombre valido.\n");
+            return;
+        }
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +382,9 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSell;
     private javax.swing.JTextArea consola;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelAsientos;
